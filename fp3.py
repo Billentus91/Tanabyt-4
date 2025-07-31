@@ -22,7 +22,7 @@ def load_resources(stock_ticker):
     """
     try:
         # Load the LSTM model (file names are capitalized)
-        lstm_model = tf.keras.models.load_model(f'lstm_model_{stock_ticker}.h5')
+        lstm_model = tf.keras.models.load_model(f'lstm_model_{stock_ticker}.keras')
 
         # Load the LSTM scalers from joblib files
         feature_scaler = joblib.load(f'lstm_feature_scaler_{stock_ticker}.joblib')
