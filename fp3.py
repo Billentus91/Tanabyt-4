@@ -52,7 +52,7 @@ def prepare_data_and_predict(lstm_model, feature_scaler, target_scaler, df_actua
     n_steps = 60
 
     # Scale the latest data for prediction
-    scaled_data = feature_scaler.transform(df_actual[['rolling_vol_5']].tail(n_steps))
+    scaled_data = feature_scaler.transform(df_actual[['GARCH_Volatility']].tail(n_steps))
 
     # Prepare the input sequence for prediction
     X_pred = scaled_data.reshape(1, n_steps, 1)
@@ -103,7 +103,7 @@ if stock_ticker:
 
         # --- Graph 1: Actual vs. LSTM Prediction ---
         st.header('Actual vs. Predicted Volatility (LSTM)')
-        fig_lstm = px.line(combined_df, y=['rolling_vol_5', 'LSTM Prediction'],
+        fig_lstm = px.line(combined_df, y=['GARCH_Volatility', 'LSTM Prediction'],
                          title=f'Actual vs. LSTM Predicted Volatility for {stock_ticker}',
                          labels={'value': 'Volatility', 'Date': 'Date'},
                          color_discrete_map={'rolling_vol_5': 'blue', 'LSTM Prediction': 'orange'})
