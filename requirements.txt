@@ -5,4 +5,4 @@ tensorflow
 plotly
 joblib
 scikit-learn
-arch
+arch==5.11
