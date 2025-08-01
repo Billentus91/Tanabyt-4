@@ -60,13 +60,13 @@ def prepare_data_and_predict(lstm_model, feature_scaler, target_scaler, df_actua
 ]
 scaled_data = feature_scaler.transform(df_actual[features_for_scaler].tail(n_steps))
     # Prepare the input sequence for prediction
-    X_pred = scaled_data.reshape(1, n_steps, 1)
+X_pred = scaled_data.reshape(1, n_steps, 1)
 
     # Make a prediction
-    predicted_scaled = lstm_model.predict(X_pred)[0][0]
+predicted_scaled = lstm_model.predict(X_pred)[0][0]
 
     # Inverse transform the prediction
-    predicted_volatility = target_scaler.inverse_transform([[predicted_scaled]])[0][0]
+predicted_volatility = target_scaler.inverse_transform([[predicted_scaled]])[0][0]
 
     # Create a new DataFrame for predictions for plotting
     df_pred = df_actual.copy()
