@@ -73,7 +73,7 @@ df_pred = df_actual.copy()
 df_pred['LSTM Prediction'] = np.nan
 df_pred.iloc[-1, df_pred.columns.get_loc('LSTM Prediction')] = predicted_volatility
 
-    return predicted_volatility, df_pred
+return predicted_volatility, df_pred
 
 # --- Streamlit App Layout ---
 st.set_page_config(layout="wide", page_title="Volatility Prediction Dashboard")
@@ -88,7 +88,7 @@ if stock_ticker:
     # Load all the data
     lstm_model, feature_scaler, target_scaler, garch_model, df_actual, metrics = load_resources(stock_ticker)
 
-    if lstm_model and feature_scaler is not None:
+if lstm_model and feature_scaler is not None:
         st.subheader(f'Volatility Prediction for {stock_ticker}')
         st.write('Forecasting 5-day rolling volatility using an LSTM model for comparison with GARCH.')
 
