@@ -69,9 +69,9 @@ predicted_scaled = lstm_model.predict(X_pred)[0][0]
 predicted_volatility = target_scaler.inverse_transform([[predicted_scaled]])[0][0]
 
     # Create a new DataFrame for predictions for plotting
-    df_pred = df_actual.copy()
-    df_pred['LSTM Prediction'] = np.nan
-    df_pred.iloc[-1, df_pred.columns.get_loc('LSTM Prediction')] = predicted_volatility
+df_pred = df_actual.copy()
+df_pred['LSTM Prediction'] = np.nan
+df_pred.iloc[-1, df_pred.columns.get_loc('LSTM Prediction')] = predicted_volatility
 
     return predicted_volatility, df_pred
 
