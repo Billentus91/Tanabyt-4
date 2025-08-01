@@ -52,8 +52,13 @@ def prepare_data_and_predict(lstm_model, feature_scaler, target_scaler, df_actua
     n_steps = 60
 
     # Scale the latest data for prediction
-    scaled_data = feature_scaler.transform(df_actual[['GARCH_Volatility']].tail(n_steps))
-
+    features_for_scaler = [
+    'returns', 'price_ratio', 'volume_ratio', 'momentum_5', 'momentum_10',
+    'hl_ratio', 'volatility_lag_1', 'volatility_lag_2', 'volatility_lag_3',
+    'volatility_lag_5', 'volatility_ma_5', 'volatility_ma_10', 'volatility_std_5',
+    'returns_lag_1', 'returns_lag_2', 'returns_lag_3'
+]
+scaled_data = feature_scaler.transform(df_actual[features_for_scaler].tail(n_steps))
     # Prepare the input sequence for prediction
     X_pred = scaled_data.reshape(1, n_steps, 1)
 
