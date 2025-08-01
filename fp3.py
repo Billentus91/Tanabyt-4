@@ -73,7 +73,7 @@ df_pred = df_actual.copy()
 df_pred['LSTM Prediction'] = np.nan
 df_pred.iloc[-1, df_pred.columns.get_loc('LSTM Prediction')] = predicted_volatility
 
-return predicted_volatility, df_pred
+  return predicted_volatility, df_pred
 
 # --- Streamlit App Layout ---
 st.set_page_config(layout="wide", page_title="Volatility Prediction Dashboard")
